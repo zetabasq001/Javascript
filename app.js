@@ -57,7 +57,10 @@ button.addEventListener('click', function(){
         return [this.weight, this.height, this.diet, this.where, this.when];
     }
 
-    
+    Dinosaur.prototype.getDinoFeatures = function(){
+        return [this.weight, this.height, this.diet, this.where,
+             this.when, this.fact];
+    }
 });
 
     // Create Dino Compare Method 1
