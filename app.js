@@ -104,6 +104,18 @@ button.addEventListener('click', function(){
         image.setAttribute('src', value);
     }
 
+    Canvas.prototype.displayContent = function(animal, content){
+        const species = animal.species;
+        const header = document.getElementById(species);
+        if(!content){
+            header.innerHTML = animal.name;
+            return;
+        }
+        header.innerHTML = species;
+        const paragraph = document.getElementById(species + 'fact');
+        paragraph.innerHTML = content;
+    }
+
 });
 
     // Create Dino Compare Method 1
