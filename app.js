@@ -1,31 +1,33 @@
-    // Use IIFE to get human data from form
-    this.human = (function(){
-        const name = document.getElementById('name').value;
-        const weight = Number(document.getElementById('weight').value);
+    function Canvas(){
+        // Use IIFE to get human data from form
+        this.human = (function(){
+            const name = document.getElementById('name').value;
+            const weight = Number(document.getElementById('weight').value);
 
-        const feet = Number(document.getElementById('feet').value);
-        const inches = Number(document.getElementById('inches').value);
+            const feet = Number(document.getElementById('feet').value);
+            const inches = Number(document.getElementById('inches').value);
 
-        const height = (function heightInInches(){
-            return (12 * feet) + inches;
+            const height = (function heightInInches(){
+                return (12 * feet) + inches;
+            })();
+
+            const diet = document.getElementById('diet').value.toLowerCase();
+            const location = document.getElementById('where').value;
+
+            return new Human(name, weight, height, diet, location);
         })();
 
-        const diet = document.getElementById('diet').value.toLowerCase();
-        const location = document.getElementById('where').value;
-
-        return new Human(name, weight, height, diet, location);
-    })();
-
-    // Create Dino Constructor
-    // Create Dino Objects
-    this.dinosaurs = (function(){
-        const dinoObjects = [];
-        for(const dino of dinoData["Dinos"]){
-            dinoObjects.push(new Dinosaur(dino.species, dino.weight,
-                dino.height, dino.diet, dino.where, dino.when, dino.fact));
-        }
-        return dinoObjects;
-    })();
+        // Create Dino Constructor
+        // Create Dino Objects
+        this.dinosaurs = (function(){
+            const dinoObjects = [];
+            for(const dino of dinoData["Dinos"]){
+                dinoObjects.push(new Dinosaur(dino.species, dino.weight,
+                    dino.height, dino.diet, dino.where, dino.when, dino.fact));
+            }
+            return dinoObjects;
+        })();
+    }
 
     // Create Human Object
 
