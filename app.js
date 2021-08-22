@@ -116,6 +116,10 @@ button.addEventListener('click', function(){
         paragraph.innerHTML = content;
     }
 
+    Canvas.prototype.displayHumanName = function(animal){
+        this.displayContent(animal, '');
+    }
+
 });
 
     // Create Dino Compare Method 1
