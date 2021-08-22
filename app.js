@@ -1,3 +1,6 @@
+// On button click, prepare and display infographic
+const button = document.getElementById('btn');
+button.addEventListener('click', function(){
     function Canvas(){
         // Use IIFE to get human data from form
         this.human = (function(){
@@ -28,6 +31,7 @@
             return dinoObjects;
         })();
     }
+}
 
     // Create Human Object
 
@@ -51,6 +55,3 @@
         // Add tiles to DOM
 
     // Remove form from screen
-
-
-// On button click, prepare and display infographic
