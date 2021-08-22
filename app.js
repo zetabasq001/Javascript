@@ -19,7 +19,7 @@ button.addEventListener('click', function(){
 
             return new Human(name, weight, height, diet, location);
         })();
-        
+
         // Create Dino Objects
         this.dinosaurs = (function(){
             const dinoObjects = [];
@@ -40,11 +40,19 @@ button.addEventListener('click', function(){
             this.when = when;
             this.fact = fact;
         }
+
+        // Create Human Object
+        function Human(name, weight, height, diet, location){
+            this.species = 'Human';
+            this.name = name;
+            this.weight = weight;
+            this.height = height;
+            this.diet = diet;
+            this.where = location;
+            this.when = 'Holocene';
+        }
     }
 });
-
-    // Create Human Object
-
 
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches.
