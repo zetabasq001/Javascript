@@ -19,8 +19,7 @@ button.addEventListener('click', function(){
 
             return new Human(name, weight, height, diet, location);
         })();
-
-        // Create Dino Constructor
+        
         // Create Dino Objects
         this.dinosaurs = (function(){
             const dinoObjects = [];
@@ -30,12 +29,21 @@ button.addEventListener('click', function(){
             }
             return dinoObjects;
         })();
+
+        // Create Dino Constructor
+        function Dinosaur(name, weight, height, diet, where, when, fact){
+            this.species = name;
+            this.weight = weight;
+            this.height = height;
+            this.diet = diet;
+            this.where = where;
+            this.when = when;
+            this.fact = fact;
+        }
     }
-}
+});
 
     // Create Human Object
-
-    // Use IIFE to get human data from form
 
 
     // Create Dino Compare Method 1
