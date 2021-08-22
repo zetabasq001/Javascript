@@ -1,3 +1,21 @@
+    // Use IIFE to get human data from form
+    this.human = (function(){
+        const name = document.getElementById('name').value;
+        const weight = Number(document.getElementById('weight').value);
+
+        const feet = Number(document.getElementById('feet').value);
+        const inches = Number(document.getElementById('inches').value);
+
+        const height = (function heightInInches(){
+            return (12 * feet) + inches;
+        })();
+
+        const diet = document.getElementById('diet').value.toLowerCase();
+        const location = document.getElementById('where').value;
+
+        return new Human(name, weight, height, diet, location);
+    })();
+
     // Create Dino Constructor
     // Create Dino Objects
     this.dinosaurs = (function(){
