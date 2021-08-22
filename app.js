@@ -135,6 +135,11 @@ button.addEventListener('click', function(){
         this.displayContent(animal, content);
     }
 
+    Canvas.prototype.createRandomInt = function(scale, shift){
+        return Math.trunc(scale * Math.random()) + shift;
+    }
+
+
 });
 
 
