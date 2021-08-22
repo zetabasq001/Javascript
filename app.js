@@ -120,6 +120,10 @@ button.addEventListener('click', function(){
         this.displayContent(animal, '');
     }
 
+    Canvas.prototype.displayPigeonFact = function(animal){
+        this.displayContent(animal, `Fact: ${animal.fact}`);
+    }
+
 });
 
     // Create Dino Compare Method 1
