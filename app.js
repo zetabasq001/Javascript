@@ -85,7 +85,11 @@ button.addEventListener('click', function(){
         main.appendChild(div);
     }
 
-
+    // Remove form from screen
+    Canvas.prototype.removeForm = function(){
+        let form = document.getElementById('dino-compare');
+        form.remove();
+    }
 
 
 });
@@ -105,5 +109,3 @@ button.addEventListener('click', function(){
 
 
         // Add tiles to DOM
-
-    // Remove form from screen
