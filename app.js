@@ -130,6 +130,11 @@ button.addEventListener('click', function(){
         this.displayDinoFact(animal, animal.fact, '');
     }
 
+    Canvas.prototype.displayDinoFact = function(animal, fact, units){
+        const content = `Fact: ${fact} ${units}`;
+        this.displayContent(animal, content);
+    }
+
 });
 
 
