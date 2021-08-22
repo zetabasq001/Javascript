@@ -1,7 +1,12 @@
     // Create Dino Constructor
     // Create Dino Objects
-    let dinosaurs = (function(){
-        return dinoData["Dinos"];
+    this.dinosaurs = (function(){
+        const dinoObjects = [];
+        for(const dino of dinoData["Dinos"]){
+            dinoObjects.push(new Dinosaur(dino.species, dino.weight,
+                dino.height, dino.diet, dino.where, dino.when, dino.fact));
+        }
+        return dinoObjects;
     })();
 
     // Create Human Object
