@@ -29,29 +29,35 @@ button.addEventListener('click', function(){
             }
             return dinoObjects;
         })();
-
-        // Create Dino Constructor
-        function Dinosaur(name, weight, height, diet, where, when, fact){
-            this.species = name;
-            this.weight = weight;
-            this.height = height;
-            this.diet = diet;
-            this.where = where;
-            this.when = when;
-            this.fact = fact;
-        }
-
-        // Create Human Object
-        function Human(name, weight, height, diet, location){
-            this.species = 'Human';
-            this.name = name;
-            this.weight = weight;
-            this.height = height;
-            this.diet = diet;
-            this.where = location;
-            this.when = 'Holocene';
-        }
     }
+
+    // Create Dino Constructor
+    function Dinosaur(name, weight, height, diet, where, when, fact){
+        this.species = name;
+        this.weight = weight;
+        this.height = height;
+        this.diet = diet;
+        this.where = where;
+        this.when = when;
+        this.fact = fact;
+    }
+
+    // Create Human Object
+    function Human(name, weight, height, diet, location){
+        this.species = 'Human';
+        this.name = name;
+        this.weight = weight;
+        this.height = height;
+        this.diet = diet;
+        this.where = location;
+        this.when = 'Holocene';
+    }
+
+    Human.prototype.getHumanFeatures = function(){
+        return [this.weight, this.height, this.diet, this.where, this.when];
+    }
+
+    
 });
 
     // Create Dino Compare Method 1
