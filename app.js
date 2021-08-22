@@ -91,6 +91,12 @@ button.addEventListener('click', function(){
         form.remove();
     }
 
+    // Add tiles to DOM
+    Canvas.prototype.addImageOnTile = function(animal){
+        const value = './images/' + animal.species.toLowerCase() + '.png';
+        const image = document.getElementById(animal.species + 'img');
+        image.setAttribute('src', value);
+    }
 
 });
 
@@ -104,8 +110,3 @@ button.addEventListener('click', function(){
 
     // Create Dino Compare Method 3
     // NOTE: Weight in JSON file is in lbs, height in inches.
-
-
-
-
-        // Add tiles to DOM
