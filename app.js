@@ -62,6 +62,12 @@ button.addEventListener('click', function(){
              this.when, this.fact];
     }
 
+    Canvas.prototype.getAnimals = function(){
+        const animals = this.dinosaurs.slice();
+        animals.splice(4, 0, this.human);
+        return animals;
+    }
+
     // Generate Tiles for each Dino in Array
     Canvas.prototype.createTile = function(animal){
         const species = animal.species;
