@@ -124,10 +124,15 @@ button.addEventListener('click', function(){
         this.displayContent(animal, `Fact: ${animal.fact}`);
     }
 
-});
-
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches.
+    Canvas.prototype.givenDinoFact = function(animal){
+        this.displayDinoFact(animal, animal.fact, '');
+    }
+
+});
+
+
 
 
     // Create Dino Compare Method 2
