@@ -230,7 +230,16 @@ button.addEventListener('click', function(){
         }
     }
 
-
+    Canvas.prototype.buildInfoGraph = function(){
+        this.removeForm();
+        const randomArray = this.createRandomIntArray();
+        for(const randomIndex of randomArray){
+            let animal = this.getAnimals()[randomIndex];
+            this.createTile(animal);
+            this.addImageOnTile(animal);
+            this.displayAnimalFact(animal);
+        }
+    }
 
 
 
