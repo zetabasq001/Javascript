@@ -220,9 +220,18 @@ button.addEventListener('click', function(){
         }
     }
 
+    Canvas.prototype.displayAnimalFact = function(animal){
+        if(animal.species === 'Human'){
+            this.displayHumanName(animal);
+        } else if(animal.species === 'Pigeon'){
+            this.displayPigeonFact(animal);
+        } else{
+            this.selectFactFunction(animal);
+        }
+    }
 
 
-    
+
 
 
 }
