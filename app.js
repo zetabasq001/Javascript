@@ -153,6 +153,10 @@ button.addEventListener('click', function(){
         arr.splice(4, 0, 4);
         return arr;
     }
+
+    Canvas.prototype.relativeDinoHumanDifference = function(dinoSize, humanSize){
+        return Math.round(100 * (dinoSize - humanSize) / humanSize) + "%";
+    }
 });
 
 
