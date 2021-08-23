@@ -139,7 +139,20 @@ button.addEventListener('click', function(){
         return Math.trunc(scale * Math.random()) + shift;
     }
 
-
+    Canvas.prototype.createRandomIntArray = function(){
+        const arr = [];
+        const scale = this.getAnimals().length;
+        while(arr.length < scale - 1){
+            let randomInt = this.createRandomInt(scale, 0);
+            if(arr.indexOf(randomInt) === -1){
+                if(randomInt !== 4){
+                    arr.push(randomInt);
+                }
+            }
+        }
+        arr.splice(4, 0, 4);
+        return arr;
+    }
 });
 
 
