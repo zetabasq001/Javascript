@@ -204,5 +204,26 @@ button.addEventListener('click', function(){
         const fact = (dinoQuality.includes(humanQuality)) ? same : diff;
 
         this.displayDinoFact(animal, fact, '');
+
+
+    Canvas.prototype.selectFactFunction = function(animal){
+        const randomInt = this.createRandomInt(3, 0);
+        switch(randomInt){
+            case 0:
+                this.givenDinoFact(animal);
+                break;
+            case 1:
+                this.compareDinoHumanQuantity(animal);
+                break;
+            case 2:
+                this.compareDinoHumanQuality(animal);
+        }
     }
+
+
+
+    
+
+
+}
 });
