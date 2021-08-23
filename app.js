@@ -179,14 +179,24 @@ button.addEventListener('click', function(){
         return units;
     }
 
-    
+    // Create Dino Compare Method 2
+    // NOTE: Weight in JSON file is in lbs, height in inches.
+    Canvas.prototype.compareDinoHumanQuantity = function(animal){
+        const randomInt = this.createRandomInt(2, 0);
+        const dinoQuant = animal.getDinoFeatures()[randomInt];
+        const units = this.getProperUnits(randomInt);
+        const humanQuant = this.human.getHumanFeatures()[randomInt];
+        const fact = this.relativeDinoHumanDifference(dinoQuant, humanQuant)
+                    + ' difference ';
+
+        this.displayDinoFact(animal, fact, units);
+    }
 });
 
 
 
 
-    // Create Dino Compare Method 2
-    // NOTE: Weight in JSON file is in lbs, height in inches.
+
 
 
     // Create Dino Compare Method 3
