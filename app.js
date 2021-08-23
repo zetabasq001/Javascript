@@ -246,5 +246,13 @@ button.addEventListener('click', function(){
             && this.human.name;
     }
 
+    const canvas = new Canvas();
+    if(canvas.isDataValid()){
+        document.getElementById('dino-compare').reset();
+        canvas.buildInfoGraph();
+    } else{
+        alert("Enter valid Name, Height, or Weight");
+    }
+
 }
 });
