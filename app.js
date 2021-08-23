@@ -191,13 +191,18 @@ button.addEventListener('click', function(){
 
         this.displayDinoFact(animal, fact, units);
     }
-});
-
-
-
-
-
-
 
     // Create Dino Compare Method 3
     // NOTE: Weight in JSON file is in lbs, height in inches.
+    Canvas.prototype.compareDinoHumanQuality = function(animal){
+        const randomInt = this.createRandomInt(3, 2);
+        const dinoQuality = animal.getDinoFeatures()[randomInt];
+        const humanQuality = this.human.getHumanFeatures()[randomInt];
+        const units = this.getProperUnits(randomInt);
+        const diff = `${dinoQuality} ${units} (differs)`;
+        const same = `${humanQuality} ${units} (same)`;
+        const fact = (dinoQuality.includes(humanQuality)) ? same : diff;
+
+        this.displayDinoFact(animal, fact, '');
+    }
+});
