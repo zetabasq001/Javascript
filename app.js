@@ -157,6 +157,29 @@ button.addEventListener('click', function(){
     Canvas.prototype.relativeDinoHumanDifference = function(dinoSize, humanSize){
         return Math.round(100 * (dinoSize - humanSize) / humanSize) + "%";
     }
+
+    Canvas.prototype.getProperUnits = function(number){
+        let units = '';
+        switch(number){
+            case 0:
+                units = ' in weight';
+                break;
+            case 1:
+                units = ' in height';
+                break;
+            case 2:
+                units = ' diet';
+                break;
+            case 3:
+                units = ' location';
+                break;
+            case 4:
+                units = ' era';
+        }
+        return units;
+    }
+
+    
 });
 
 
