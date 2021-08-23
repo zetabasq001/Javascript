@@ -241,7 +241,10 @@ button.addEventListener('click', function(){
         }
     }
 
-
+    Canvas.prototype.isDataValid = function(){
+        return this.human.height > 0 && this.human.weight > 0
+            && this.human.name;
+    }
 
 }
 });
