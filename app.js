@@ -189,43 +189,6 @@ button.addEventListener('click', function(){
     }
 
     /**
-    * @description Display human name
-    * @param {object} animal - human object
-    */
-    Canvas.prototype.displayHumanName = function(animal){
-        // display content of human tile
-        // empty string indicates no human fact will be displayed
-        this.displayContent(animal, '');
-    }
-
-    /**
-    * @description Display pigeon and corresponding fact
-    * @param {object} animal - pigeon object
-    */
-    Canvas.prototype.displayPigeonFact = function(animal){
-        this.displayContent(animal, `Fact: ${animal.fact}`);
-    }
-
-    /**
-    * @description Display dinosaur and corresponding fact from given data
-    * @param {object} animal - dinosaur object
-    * @param {string} fact - the fact pertaining to dinosaur
-    * @param {string} units - proper units associated with this fact
-    */
-    Canvas.prototype.displayDinoFact = function(animal, fact){
-        const content = `Fact: ${fact} `;
-        this.displayContent(animal, content);
-    }
-
-    // /**
-    // * @description Display only given fact from dinosaur data
-    // * @param {object} animal - dinosaur object
-    // */
-    // Canvas.prototype.givenDinoFact = function(animal){
-    //     this.displayDinoFact(animal, animal.fact);
-    // }
-
-    /**
     * @description Generate random integer
     * @param {number} scale - number of integers
     * @param {number} shift - range of integers
@@ -311,7 +274,7 @@ button.addEventListener('click', function(){
 
 
         // display this comparison of dino fact relative to user input
-        this.displayDinoFact(animal, fact);
+        this.displayContent(animal, fact);
     }
 
     /**
@@ -330,7 +293,7 @@ button.addEventListener('click', function(){
         const fact = `Same ${units} - ${dinoQuality.includes(humanQuality)}.
             Dino - ${dinoQuality}; You - ${humanQuality} ${units}`
 
-        this.displayDinoFact(animal, fact);
+        this.displayContent(animal, fact);
     }
 
     /**
@@ -343,7 +306,7 @@ button.addEventListener('click', function(){
         const randomInt = this.createRandomInt(3, 0);
         switch(randomInt){
             case 0:
-                this.displayDinoFact(animal, animal.fact);  // given facts from JSON file
+                this.displayContent(animal, animal.fact);  // given facts from JSON file
                 break;
             case 1:
                 this.compareDinoHumanQuantity(animal); // quantitative properties
@@ -360,11 +323,14 @@ button.addEventListener('click', function(){
     Canvas.prototype.displayAnimalFact = function(animal){
         // depending on the animal display corresponding fact
         if(animal.species === 'Human'){
-            this.displayHumanName(animal);       // if human
+            // if human
+            this.displayContent(animal, '');
         } else if(animal.species === 'Pigeon'){
-            this.displayPigeonFact(animal);      // if pigeon
+            // if pigeon
+            this.displayContent(animal, animal.fact);
         } else{
-            this.selectFactFunction(animal);     // if dinosaur (not a pigeon)
+            // if dinosaur (not a pigeon)
+            this.selectFactFunction(animal);
         }
     }
 
