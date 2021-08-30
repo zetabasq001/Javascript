@@ -122,23 +122,34 @@ button.addEventListener('click', function(){
     }
 
     /**
-    * @description Generate a tile for an animal
+    * @description Generate a tile for an animal: includes div, header,
+    * paragraph (only for dinosaur), and image tag
     * @param {object} animal - A dinosaur or human object
     */
     Canvas.prototype.createTile = function(animal){
+        // get species of animal
         const species = animal.species;
+        // get the main tag
         const main = document.getElementById('grid');
+
+        // and create 2 tag elements div and h3
         const div = document.createElement('div');
         const header = document.createElement('h3');
 
+        // if animal is not human, then create a p tag for the fact-content
         if(animal.species !== 'Human'){
+            // create p tag
             const paragraph = document.createElement('p');
+            // id the p tag
             paragraph.setAttribute('id', species + 'fact');
+            // append to div
             div.appendChild(paragraph);
         }
-
+        // id the header with species name
         header.setAttribute('id', species);
+        // all div tags have a class grid-item
         div.setAttribute('class', 'grid-item');
+        // appeand header to div
         div.appendChild(header);
 
         const image = document.createElement('img');
@@ -151,6 +162,7 @@ button.addEventListener('click', function(){
     * @description Remove form from screen
     */
     Canvas.prototype.removeForm = function(){
+        // get the form tag and remove it from DOM
         let form = document.getElementById('dino-compare');
         form.remove();
     }
@@ -160,8 +172,11 @@ button.addEventListener('click', function(){
     * @param {object} animal - A dinosaur or human object
     */
     Canvas.prototype.addImageOnTile = function(animal){
+        // get the image file
         const value = './images/' + animal.species.toLowerCase() + '.png';
+        // get the specific img tag
         const image = document.getElementById(animal.species + 'img');
+        // and set the attribute src to image file
         image.setAttribute('src', value);
     }
 
@@ -174,16 +189,18 @@ button.addEventListener('click', function(){
         // animal species name
         const species = animal.species;
 
-        // gets header associated with species
+        // get header tag associated with species
         const header = document.getElementById(species);
         if(!content){
-
+            // human has no content other than its name
             header.innerHTML = animal.name;
-            return;
         } else{
-
+            // otherwise header name of dino
             header.innerHTML = species;
+
+            // get paragraph tag associated with the dinosaur
             const paragraph = document.getElementById(species + 'fact');
+            // and display its factual content in a paragraph tag
             paragraph.innerHTML = content;
         }
     }
@@ -231,7 +248,7 @@ button.addEventListener('click', function(){
         let units = '';
         switch(number){
             case 0:
-                units = ' lbs of weight';
+                units = ' lbs';
                 break;
             case 1:
                 units = ' inches in height';
@@ -249,87 +266,96 @@ button.addEventListener('click', function(){
     }
 
     /**
-    * @description Comparison of user and dinosaur weight or height
+    * @description Comparison of user and dinosaur quantities: weight or height
     * @param {object} animal - dinosaur object (no pigeon)
     */
     Canvas.prototype.compareDinoHumanQuantity = function(animal){
 
-        // select at random the weight or height property
+        // select at random the dino weight or height to compare to user
         const randomInt = this.createRandomInt(2, 0);
-        const dinoQuant = animal.getDinoFeatures()[randomInt];       // for dino
-        const humanQuant = this.human.getHumanFeatures()[randomInt]; // for human
-        const units = this.getProperUnits(randomInt);                // with units
+        // the dino weight or height selected
+        const dinoQuant = animal.getDinoFeatures()[randomInt];
+        // the corresponding user weight or height
+        const humanQuant = this.human.getHumanFeatures()[randomInt];
+        // and the corresponding units
+        const units = this.getProperUnits(randomInt);
 
         let fact;
-        if(dinoQuant > humanQuant){
-            fact = `Dinosaur's ${dinoQuant} ${units} greater than your
-                ${humanQuant} ${units}`;
-        } else if(dinoQuant < humanQuant){
-            fact = `Dinosaur's ${dinoQuant} ${units} less than your
-                ${humanQuant} ${units}`;
+        // the quantitative fact about dino and user
+        if(dinoQuant !== humanQuant){
+            // if not equal in weight or height
+            fact = `Dino - ${dinoQuant} ${units}; However, you are ${humanQuant}
+             ${units}`;
         } else{
-            fact = `Dinosaur's ${dinoQuant} ${units} equals your
-                ${humanQuant} ${units}`;
+            // if equal in weight or height
+            fact = `Dino - ${dinoQuant} ${units}. You are ${humanQuant} ${units}
+             too`;
         }
-
 
         // display this comparison of dino fact relative to user input
         this.displayContent(animal, fact);
     }
 
     /**
-    * @description Comparison of user and dinosaur qualities
-    * @param {object} animal - dinosaur object
+    * @description Comparison of user and dinosaur qualities: diet, location, or
+    * era
+    * @param {object} animal - dinosaur object (no pigeon)
     */
     Canvas.prototype.compareDinoHumanQuality = function(animal){
 
-        // select at random a quality to compare: diet, location, or era
+        // select at random a quality to compare to user: diet, location, or era
         const randomInt = this.createRandomInt(3, 2);
-        const dinoQuality = animal.getDinoFeatures()[randomInt];        // for dino
-        const humanQuality = this.human.getHumanFeatures()[randomInt];  // for human
-        const units = this.getProperUnits(randomInt);                   // with units
+        // the dino quality selected
+        const dinoQuality = animal.getDinoFeatures()[randomInt];
+        // the corresponding human quality of user
+        const humanQuality = this.human.getHumanFeatures()[randomInt];
+        // corresponding units
+        const units = this.getProperUnits(randomInt);
 
-        // fact regarding the randomly chosen quality
-        const fact = `Same ${units} - ${dinoQuality.includes(humanQuality)}.
-            Dino - ${dinoQuality}; You - ${humanQuality} ${units}`
+        // the qualitative fact about dino and user
+        const fact = `Dino - ${dinoQuality}. You - ${humanQuality} ${units}`
 
         this.displayContent(animal, fact);
     }
 
     /**
-    * @description randomly selects a fact from given data or a comparison fact
+    * @description randomly selects from 3 categories of facts: given facts from
+    * JSON file, quantitative facts, or qualitative facts
     * @param {object} animal - dinosaur object (no pigeon)
     */
     Canvas.prototype.selectFactFunction = function(animal){
 
-        // selects at random among the three sets of facts
+        // selects any category of facts
         const randomInt = this.createRandomInt(3, 0);
         switch(randomInt){
             case 0:
-                this.displayContent(animal, animal.fact);  // given facts from JSON file
+                // given facts from JSON file
+                this.displayContent(animal, animal.fact);
                 break;
             case 1:
-                this.compareDinoHumanQuantity(animal); // quantitative properties
+                // facts about height or weight
+                this.compareDinoHumanQuantity(animal);
                 break;
             case 2:
-                this.compareDinoHumanQuality(animal);  // qualitative properties
+                // facts about diet, location, or era
+                this.compareDinoHumanQuality(animal);
         }
     }
 
     /**
-    * @description display fact associated with animals randomly
+    * @description display a human, pigeon or dinosaur fact
     * @param {object} animal - animal object including human
     */
     Canvas.prototype.displayAnimalFact = function(animal){
-        // depending on the animal display corresponding fact
+        // depending on the animal display a corresponding fact or no fact
         if(animal.species === 'Human'){
-            // if human
+            // if a human, then there is no fact
             this.displayContent(animal, '');
         } else if(animal.species === 'Pigeon'){
-            // if pigeon
+            // if a pigeon, then display the one given fact
             this.displayContent(animal, animal.fact);
         } else{
-            // if dinosaur (not a pigeon)
+            // if a dinosaur (and not a pigeon), then display any fact
             this.selectFactFunction(animal);
         }
     }
